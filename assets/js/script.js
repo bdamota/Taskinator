@@ -10,12 +10,22 @@ var taskFormHandler = function(event) {
   var taskNameInput = document.querySelector("input[name='task-name']").value;
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
-  // package up data as an object
+  var isEdit = formEl.hasAttribute("data-task-id");
+
+// has data attribute, so get task id and call function to complete edit process
+if (isEdit) {
+  var taskId = formEl.getAttribute("data-task-id");
+  completeEditTask(taskNameInput, taskTypeInput, taskId);
+} 
+// no data attribute, so create object as normal and pass to createTaskEl function
+else {
   var taskDataObj = {
     name: taskNameInput,
     type: taskTypeInput
   };
 
+  createTaskEl(taskDataObj);
+}
     // check if input values are empty strings
     if (!taskNameInput || !taskTypeInput) {
       alert("You need to fill out the task form!");
@@ -26,6 +36,18 @@ var taskFormHandler = function(event) {
       createTaskEl(taskDataObj);
 };
 
+var completeEditTask = function(taskName, taskType, taskId) {
+  var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+
+  // set new values
+  taskSelected.querySelector("h3.task-name").textContent = taskName;
+  taskSelected.querySelector("span.task-type").textContent = taskType;
+
+  alert("Task Updated!");
+
+  formEl.removeAttribute("data-task-id");
+  document.querySelector("#save-task").textContent = "Add Task";
+};
 
 var createTaskEl = function(taskDataObj) {
   var listItemEl = document.createElement("li");
@@ -36,7 +58,7 @@ var createTaskEl = function(taskDataObj) {
 
   var taskInfoEl = document.createElement("div");
   taskInfoEl.className = "task-info";
-  taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
+  taskInfoEl.innerHTML = "<h3 class= 'task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
   listItemEl.appendChild(taskInfoEl);
 
   var taskActionsEl = createTaskActions(taskIdCounter);
@@ -114,9 +136,7 @@ var createTaskActions = function(taskId) {
   };
 
   var editTask = function(taskId) {
-    console.log("editing task #" + taskId);
-  
-   // get task list item element
+    // get task list item element
   var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
 
   // get content from task name and type
