@@ -180,7 +180,6 @@ var createTaskActions = function(taskId) {
     var taskId = event.target.getAttribute("data-task-id");
     event.dataTransfer.setData("text/plain", taskId);
     var getId = event.dataTransfer.getData("text/plain");
-    console.log("getId:", getId, typeof getId);
   };
 
   var dropZoneDragHandler = function(event) {
@@ -197,8 +196,6 @@ var createTaskActions = function(taskId) {
     var dropZoneEl = event.target.closest(".task-list");
     var statusType = dropZoneEl.id;
     var draggableElement = document.querySelector("[data-task-id='" + id + "']");
-    console.log(draggableElement);
-    console.dir(draggableElement);
     var dropZoneEl = event.target.closest(".task-list");
     var statusType = dropZoneEl.id;
     // set status of task based on dropZone id
