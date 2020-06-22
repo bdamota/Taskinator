@@ -7,7 +7,33 @@ var tasksCompletedEl = document.querySelector("#tasks-completed");
 var buttonEl = document.querySelector("#save-task");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
+var tasks = [
+  {
+    id: 1,
+    name: "Add localStorage persistence",
+    type: "Web",
+    status: "in progress"
+  },
+  {
+    id: 2,
+    name: "Learn JavaScript",
+    type: "Web",
+    status: "in progress"
+  },
+  {
+    id: 3,
+    name: "Refactor code",
+    type: "Web",
+    status: "to do"
+  }
+];
+
+var tasks = [];
+
+//if data display something else or nothing load data function 
+
 var taskFormHandler = function(event) {
+  console.log("testing");
   event.preventDefault();
   var taskNameInput = document.querySelector("input[name='task-name']").value;
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
@@ -35,8 +61,6 @@ else {
       return false;
     }
     formEl.reset();
-      // send it as an argument to createTaskEl
-      createTaskEl(taskDataObj);
 };
 
 var createTaskEl = function(taskDataObj) {
@@ -265,10 +289,24 @@ var dragLeaveHandler = function(event) {
 }
 
 //Save to localStorage 
+var taskIdCounter = [];
+
 var tasks = [];
 
 var saveTasks = function() {
+  console.log("testing");
   localStorage.setItem("tasks", JSON.stringify(tasks));
+};
+
+var loadTasks = function() {
+  localStorage.getItem("tasks", tasks);
+  if (tasks === "null") {
+     tasks = [];
+  }
+  tasks = JSON.parse(tasks);
+  for (var i = 0; i < tasks.length; i++) {
+   console.log(tasks[i])
+  }
 }
   
 pageContentEl.addEventListener("click", taskButtonHandler);
@@ -277,3 +315,6 @@ pageContentEl.addEventListener("dragstart", dragTaskHandler);
 pageContentEl.addEventListener("dragover", dropZoneDragHandler);
 pageContentEl.addEventListener("drop", dropTaskHandler);
 pageContentEl.addEventListener("dragleave", dragLeaveHandler);
+
+
+
