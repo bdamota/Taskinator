@@ -17,3 +17,4 @@ https://github.com/bdamota/Taskinator/blob/master/Screen%20Shot%202020-07-01%20a
 
 
 ## LINK TO DEPLOYED SITE:
+bdamota.github.io/taskinator/.
