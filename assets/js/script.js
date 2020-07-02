@@ -9,23 +9,11 @@ var tasksToDoEl = document.querySelector("#tasks-to-do");
 
 var tasks = [
   {
-    id: 1,
-    name: "Add localStorage persistence",
-    type: "Web",
-    status: "in progress"
+    id: "taskIdCounter",
+    name: "",
+    type: "",
+    status: ""
   },
-  {
-    id: 2,
-    name: "Learn JavaScript",
-    type: "Web",
-    status: "in progress"
-  },
-  {
-    id: 3,
-    name: "Refactor code",
-    type: "Web",
-    status: "to do"
-  }
 ];
 
 var tasks = [];
@@ -33,7 +21,6 @@ var tasks = [];
 //if data display something else or nothing load data function 
 
 var taskFormHandler = function(event) {
-  console.log("testing");
   event.preventDefault();
   var taskNameInput = document.querySelector("input[name='task-name']").value;
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
@@ -321,7 +308,6 @@ pageContentEl.addEventListener("dragstart", dragTaskHandler);
 pageContentEl.addEventListener("dragover", dropZoneDragHandler);
 pageContentEl.addEventListener("drop", dropTaskHandler);
 pageContentEl.addEventListener("dragleave", dragLeaveHandler);
-
 
 
 
