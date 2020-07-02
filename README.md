@@ -9,6 +9,7 @@ A simple app to keep track of your to-do list.
 - JavaScript
 
 ## MOCKUP:
+https://github.com/bdamota/Taskinator/blob/master/110-lesson-mockup.gif
 
 
 ## LINK TO FINAL SCREENSHOT:
