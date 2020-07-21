@@ -16,8 +16,6 @@ var tasks = [
   },
 ];
 
-var tasks = [];
-
 //if data display something else or nothing load data function 
 
 var taskFormHandler = function(event) {
@@ -276,8 +274,6 @@ var dragLeaveHandler = function(event) {
 }
 
 //Save to localStorage 
-var taskIdCounter = [];
-
 var tasks = [];
 
 var saveTasks = function() {
